@@ -53,14 +53,29 @@ Items missing any required field are silently skipped — they won't break the s
 
 ## Webflow setup
 
-1. Select your **Collection List Wrapper** and add:
-   - `fj-blog` / `list`
-   - `fj-blog-publisher-name` / your organisation name
-   - `fj-blog-publisher-logo` / your logo URL
+### Step 1 — Add the script
 
-2. Select your **Collection Item** and add `fj-blog` / `item`
+Paste the `<script>` tag into **Project Settings → Custom Code → Head Code**, or into **Page Settings → Custom Code → Before </body> tag** for page-specific use.
 
-3. On the **Collection Item**, add each of the following custom attributes and bind them to the corresponding CMS field:
+### Step 2 — Add attributes to your Collection List
+
+In the Webflow Designer, open the **Navigator** panel (Cmd/Ctrl + U) to locate the correct elements. Select each element, open the **Element Settings** panel (D key), scroll down to **Custom Attributes**, and add the attribute name and value.
+
+**On the Collection List Wrapper** (the outermost element of your collection list, one level above the Collection List itself):
+
+| Attribute | Value |
+|---|---|
+| `fj-blog` | `list` |
+| `fj-blog-publisher-name` | Your organisation name e.g. `Ecanvasser` |
+| `fj-blog-publisher-logo` | Your logo URL |
+
+**On the Collection Item** (the repeating element inside the Collection List):
+
+| Attribute | Value |
+|---|---|
+| `fj-blog` | `item` |
+
+Then add the following attributes to the **Collection Item** and bind each one to the corresponding CMS field using the **+** bind button next to the attribute value:
 
 | Attribute | Bind to CMS field |
 |---|---|
@@ -71,6 +86,8 @@ Items missing any required field are silently skipped — they won't break the s
 | `fj-blog-date-modified` | Updated on |
 | `fj-blog-description` | Post summary / excerpt |
 | `fj-blog-url` | Slug or full URL field |
+
+> **Note:** In Webflow, the Collection List Wrapper is the element labelled "Collection List Wrapper" in the Navigator — one level above "Collection List", which is one level above "Collection Item". Make sure you select the correct element at each step.
 
 ---
 
@@ -93,7 +110,7 @@ Items missing any required field are silently skipped — they won't break the s
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Apple",
+      "name": "Ecanvasser",
       "logo": {
         "@type": "ImageObject",
         "url": "https://www.example.com/logo.svg"
@@ -101,7 +118,7 @@ Items missing any required field are silently skipped — they won't break the s
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.example.com/blog/how-to-build-a-team-that-scales"
+      "@id": "https://www.example.com/blog/how-to-build-a-field-team-that-scales"
     }
   }
 ]
